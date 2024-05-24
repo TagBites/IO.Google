@@ -1,0 +1,46 @@
+﻿<Project>
+
+  <!-- Company/Copyright -->
+  <PropertyGroup>
+    <Company>Tag Bites sp. z o.o.</Company>
+    <Authors>Tag Bites sp. z o.o.</Authors>
+    <CopyrightSinceYear>2012</CopyrightSinceYear>
+
+    <Copyright>© $(CopyrightSinceYear)-$([System.DateTime]::Today.ToString(`yyyy`)) $(Company)</Copyright>
+  </PropertyGroup>
+
+  <!-- Bin/Obj directories -->
+  <PropertyGroup>
+    <BaseOutputPath>$(SolutionDir)bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(SolutionDir)bin\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+  <!-- Compilation settings -->
+  <PropertyGroup>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- Publish -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Publish'">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Globalziation -->
+  <PropertyGroup>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <!-- Ignored files/folders -->
+  <PropertyGroup>
+    <DefaultItemExcludes>$(DefaultItemExcludes);*.csproj.DotSettings</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <!-- Includes -->
+  <Import Condition="exists('Version.props')" Project="Version.props" />
+  <Import Condition="exists('Licensing.props')" Project="Licensing.props" /> 
+
+</Project>
